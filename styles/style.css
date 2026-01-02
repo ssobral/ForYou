@@ -93,3 +93,8 @@ strong{
         flex-direction: column;
     }
 }
+
+.manu{
+    margin-top: 20rem;
+    text-align: center;
+}
