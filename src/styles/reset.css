@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+:root {
+    --fonte: 'Poppins', sans-serif;
+    --fonte-titulo: 'Murecho', sans-serif;
+    --fundo: #2A2424;
+    --vermelho: #8C2F3F;
+    --branco: #FFFFFF;
+    --tamanho-fonte: 16px;
+    --tamanho-fonte-titulo: 24px;
+  }
+
+  
+  h1 {
+    font-family: var(--fonte-titulo);
+    font-size: var(--tamanho-fonte-titulo);
+    color: var(--branco);
+  }
+  
+p{
+    font-size: var(--tamanho-fonte);
+    font-family: var(--fonte);
+    color: var(--branco);
+    font-weight: 400;
+}
