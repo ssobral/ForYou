@@ -25,12 +25,6 @@ function Nav() {
                             <li className="nav-item">
                                 <Link to="/" className='nav-link'>Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to="/Quiz1" className='nav-link'>Quiz 1</Link>
-                            </li>
-                            {/* <li className="nav-item">
-                                <Link to="/Quiz2" className='nav-link'>Quiz 2</Link>
-                            </li> */}
                         </ul>
                     </div>
                 </div>

@@ -63,7 +63,8 @@ export default function Quiz2() {
     const [error, setError] = useState(false);
 
     function onQuizSuccess() {
-        // função vazia por enquanto
+        alert("445, anote isso. Quando terminar, me fala Maça do amor.");
+        navigate('/');
     }
 
     function handleAnswer(index) {
