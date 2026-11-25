@@ -8,6 +8,7 @@ import V2 from './pages/V2.jsx';
 import Quiz1 from './pages/Quiz1.jsx';
 import Quiz2 from './pages/Quiz2.jsx';
 import Quiz3 from './pages/Quiz3.jsx';
+import Memory from './pages/Memory.jsx';
 
 const router = createHashRouter(
   [
@@ -20,7 +21,8 @@ const router = createHashRouter(
         { path: '/v2', element: <V2 /> },
         { path: '/Quiz1', element: <Quiz1 /> },
         { path: '/Quiz2', element: <Quiz2 /> },
-        { path: '/Quiz3', element: <Quiz3 /> }
+        { path: '/Quiz3', element: <Quiz3 /> },
+        { path: '/memoria', element: <Memory /> }
       ],
     },
   ],

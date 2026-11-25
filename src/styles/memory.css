@@ -1,0 +1,54 @@
+.memory-page {
+  min-height: calc(100dvh - 80px);
+  padding: clamp(24px, 4vw, 48px) 6% 32px;
+  color: #f3e7d9;
+  background-color: #252125;
+  background-image: radial-gradient(ellipse at 15% 20%, #974d6920, transparent 50%), radial-gradient(ellipse at 90% 70%, #50839819, transparent 50%);
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.memory-page,
+.memory-page * { box-sizing: border-box; }
+.memory-game { width: 100%; max-width: 660px; margin: 0 auto; }
+.memory-heading { text-align: center; }
+.memory-heading h1 { margin: 0 0 .75rem; color: #f3e7d9; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.4rem, 6vw, 3.5rem); font-weight: 400; letter-spacing: -.05em; }
+.memory-heading h1 em { color: #dc9aab; font-size: inherit; font-weight: inherit; }
+.memory-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 1.5rem 0 1rem; }
+.memory-stats { display: flex; gap: clamp(20px, 5vw, 40px); margin: 0; }
+.memory-stats dt { margin-bottom: .2rem; color: #bbaaa8; font-size: .875rem; font-weight: 400; }
+.memory-stats dd { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+.memory-stats dd span { color: #bbaaa8; font-size: 1rem; font-weight: 400; }
+.memory-restart { flex-shrink: 0; min-height: 44px; padding: .65rem 1rem; border: 1px solid #dc9aab73; border-radius: 11px; color: #f3e7d9; background: #89516c29; font: inherit; font-size: .9375rem; cursor: pointer; transition: background .2s, border-color .2s; }
+.memory-restart:hover { border-color: #dc9aab; background: #89516c55; }
+.memory-board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1.8vw, 14px); }
+.memory-card { position: relative; display: block; width: 100%; min-width: 0; aspect-ratio: 1; padding: 0; border: 0; border-radius: 14px; background: transparent; perspective: 800px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.memory-card__inner { position: relative; display: block; width: 100%; height: 100%; border-radius: inherit; transform-style: preserve-3d; transition: transform .35s; }
+.memory-card--revealed .memory-card__inner { transform: rotateY(180deg); }
+.memory-card__back,
+.memory-card__front { position: absolute; inset: 0; overflow: hidden; border: 1px solid #bc82965c; border-radius: inherit; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.memory-card__back { display: grid; place-items: center; background: radial-gradient(ellipse at top left, #87526c45, transparent 85%), #332a33; color: #dc9aab; transition: border-color .2s, background-color .2s; }
+.memory-card__back::before { position: absolute; inset: 7px; border: 1px solid #dc9aab24; border-radius: 9px; content: ''; }
+.memory-card__back svg { width: 34%; height: 34%; opacity: .8; transform: rotate(-12deg); }
+.memory-card:hover:not(:disabled) .memory-card__back { border-color: #dc9aab; background-color: #463244; }
+.memory-card__front { transform: rotateY(180deg); background: #332a33; }
+.memory-card__front img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.memory-card--matched .memory-card__front { border: 3px solid #a4c3af; }
+.memory-card__check { position: absolute; right: 7px; bottom: 7px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #d5e6da; color: #234a36; font-size: 1rem; font-weight: 700; box-shadow: 0 1px 5px #0004; }
+.memory-card:disabled { cursor: default; opacity: 1; }
+.memory-page button:focus-visible { outline: 3px solid #f3c0cf; outline-offset: 4px; }
+.memory-game .memory-status { min-height: 3.2em; margin: 1.25rem 0 0; color: #c8abae; font: inherit; line-height: 1.6; text-align: center; }
+
+@media (max-width: 700px) {
+  .memory-page { min-height: calc(100dvh - 70px); }
+}
+
+@media (max-width: 480px) {
+  .memory-page { padding-right: 5%; padding-left: 5%; }
+  .memory-board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .memory-card { border-radius: 11px; }
+  .memory-toolbar { margin-top: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-page * { transition: none !important; }
+}
