@@ -1,0 +1,225 @@
+.dog-intro {
+  --intro-size: clamp(150px, 24vw, 280px);
+  --intro-floor: 23%;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: #2a2424;
+  animation: intro-reveal var(--intro-duration) linear both;
+}
+
+.dog-intro,
+.dog-intro * {
+  box-sizing: border-box;
+}
+
+.dog-intro__scene {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  height: clamp(230px, 34vh, 340px);
+  isolation: isolate;
+}
+
+.dog-intro__ground {
+  position: absolute;
+  bottom: var(--intro-floor);
+  left: 8%;
+  width: 84%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #a77b6d66 28%, #a77b6d66 72%, transparent);
+}
+
+.intro-dog {
+  --dog-width: var(--intro-size);
+  position: absolute;
+  bottom: var(--intro-floor);
+  left: 0;
+  width: var(--dog-width);
+  aspect-ratio: 280 / 220;
+  margin-bottom: calc(var(--dog-width) * -.061);
+  will-change: transform;
+}
+
+.intro-dog--sheltie {
+  z-index: 2;
+  animation: intro-sheltie-path var(--intro-duration) linear both;
+}
+
+.intro-dog--pinscher {
+  --dog-width: calc(var(--intro-size) * .57);
+  z-index: 3;
+  animation: intro-pinscher-path var(--intro-duration) linear both;
+}
+
+.intro-dog--shih-tzu {
+  --dog-width: calc(var(--intro-size) * .72);
+  z-index: 1;
+  animation: intro-shih-tzu-path var(--intro-duration) linear both;
+}
+
+.intro-dog__drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.intro-dog__bounce {
+  animation: intro-walk-bounce .44s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+.intro-dog__leg {
+  transform-box: view-box;
+  transform-origin: 80px 142px;
+  animation: intro-leg .44s ease-in-out infinite alternate;
+}
+
+.intro-dog__leg--front-near,
+.intro-dog__leg--front-far {
+  transform-origin: 174px 141px;
+}
+
+.intro-dog__leg--front-near,
+.intro-dog__leg--back-far {
+  animation-direction: alternate-reverse;
+}
+
+.intro-dog--pinscher .intro-dog__leg,
+.intro-dog--pinscher .intro-dog__bounce {
+  animation-duration: .32s;
+  animation-delay: -.16s;
+}
+
+.intro-dog__tail {
+  transform-box: view-box;
+  transform-origin: 76px 125px;
+  animation: intro-tail .65s ease-in-out infinite alternate;
+}
+
+.intro-dog__head {
+  transform-box: view-box;
+  transform-origin: 190px 100px;
+}
+
+.intro-dog__head--sheltie,
+.intro-dog__head--pinscher {
+  animation: intro-look-back var(--intro-duration) linear both;
+}
+
+.intro-dog__head--pinscher {
+  transform-origin: 190px 95px;
+}
+
+.dog-intro[data-phase='notice'] .intro-dog:not(.intro-dog--shih-tzu) .intro-dog__leg,
+.dog-intro[data-phase='notice'] .intro-dog:not(.intro-dog--shih-tzu) .intro-dog__bounce {
+  animation-play-state: paused;
+}
+
+.dog-intro[data-phase='run'] .intro-dog__leg,
+.intro-dog--shih-tzu .intro-dog__leg {
+  animation-name: intro-run-leg;
+  animation-duration: .17s;
+}
+
+.dog-intro[data-phase='run'] .intro-dog__bounce,
+.intro-dog--shih-tzu .intro-dog__bounce {
+  animation-name: intro-run-bounce;
+  animation-duration: .34s;
+}
+
+.intro-dog--shih-tzu .intro-dog__bounce,
+.intro-dog--shih-tzu .intro-dog__leg {
+  animation-delay: -.1s;
+}
+
+/* All paths use viewport units so the dogs enter and leave on any screen. */
+@keyframes intro-sheltie-path {
+  0% { transform: translate3d(calc(var(--intro-size) * -1.7), 0, 0); }
+  37%, 53.5% { transform: translate3d(calc(50vw - var(--intro-size) * .82), 0, 0); }
+  91%, 100% { transform: translate3d(110vw, 0, 0); }
+}
+
+@keyframes intro-pinscher-path {
+  0% { transform: translate3d(calc(var(--intro-size) * -.65), 0, 0); }
+  37%, 53.5% { transform: translate3d(calc(50vw + var(--intro-size) * .05), 0, 0); }
+  88%, 100% { transform: translate3d(calc(110vw + var(--intro-size) * .8), 0, 0); }
+}
+
+@keyframes intro-shih-tzu-path {
+  0%, 39% { transform: translate3d(calc(var(--intro-size) * -1.2), 0, 0); }
+  59% { transform: translate3d(calc(50vw - var(--intro-size) * 1.2), 0, 0); }
+  92%, 100% { transform: translate3d(108vw, 0, 0); }
+}
+
+@keyframes intro-look-back {
+  0%, 37% { transform: scaleX(1) rotate(0deg); }
+  40%, 50% { transform: scaleX(-1) rotate(-6deg); }
+  53.5%, 100% { transform: scaleX(1) rotate(0deg); }
+}
+
+@keyframes intro-leg {
+  from { transform: rotate(-15deg); }
+  to { transform: rotate(15deg); }
+}
+
+@keyframes intro-run-leg {
+  from { transform: rotate(-32deg); }
+  to { transform: rotate(32deg); }
+}
+
+@keyframes intro-walk-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes intro-run-bounce {
+  0%, 100% { transform: translateY(0) rotate(1deg); }
+  50% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes intro-tail {
+  from { transform: rotate(-6deg); }
+  to { transform: rotate(9deg); }
+}
+
+@keyframes intro-reveal {
+  0%, 95% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .dog-intro {
+    --intro-size: clamp(145px, 36vw, 205px);
+  }
+
+  .dog-intro__scene {
+    height: clamp(220px, 32vh, 280px);
+  }
+}
+
+@media (max-height: 500px) and (min-width: 601px) {
+  .dog-intro {
+    --intro-size: 165px;
+  }
+
+  .dog-intro__scene {
+    height: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep the opening visible; reduce only the secondary decorative motion. */
+  .intro-dog__bounce,
+  .intro-dog__tail {
+    animation: none !important;
+  }
+}

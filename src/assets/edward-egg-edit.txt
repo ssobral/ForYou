@@ -1,0 +1,5 @@
+Asset: edward-egg.png
+Input: image attached by the user (Edward Cullen face on an egg).
+Mode: built-in image_gen image editing, transparent_background=true.
+Edit prompt:
+Use case: background-extraction. The most recently attached image is the edit target: a white egg with the face of Edward Cullen, on a white background. Remove ONLY the white background outside the egg and the floor/drop shadow beneath it, leaving a clean transparent alpha background. Keep the original egg, facial identity, face, hairless egg shape, expression, eyes, mouth, colors, grayscale shading, proportions and image content exactly as in the supplied image. Do not redraw or redesign the egg or face. Preserve the full egg from tip to bottom with accurate clean edges and the original photographic surface shading. Output the isolated egg-with-face as a transparent PNG cutout, with no added border, props, text, scenery or shadow.
